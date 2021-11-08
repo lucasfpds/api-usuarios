@@ -1,0 +1,34 @@
+require("dotenv").config();
+const knex = require("../bancodedados/conexao");
+const jwt = require("jsonwebtoken");
+
+const filtroLogin = async (req, res, next) => {
+  console.log(req.headers)
+  const { authorization } = req.headers;
+
+  if (!authorization) {
+    return res.status(401).json("Não autorizado");
+  }
+
+  try {
+    const token = authorization.replace("Bearer ", "").trim();
+    console.log(token)
+    const { id } = jwt.verify(token, process.env.PASSWORD_JWT);
+
+    const usuarioExiste = await knex("usuarios").where({ id }).first();
+
+    if (!usuarioExiste) {
+      return res.status(404).json("Usuario não encontrado");
+    }
+
+    const { senha, ...usuario } = usuarioExiste;
+
+    req.usuario = usuario;
+
+    next();
+  } catch (error) {
+    return res.status(400).json(error.message);
+  }
+};
+
+module.exports = filtroLogin;
