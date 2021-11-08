@@ -5,7 +5,7 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:3000",
+  "host": "api-usuarios-beta.herokuapp.com",
   "basePath": "/",
   "tags": [],
   "schemes": [
