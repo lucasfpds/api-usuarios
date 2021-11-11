@@ -126,3 +126,5 @@ Esta rota retorna o perfil do usuário logado. Não é necessário informar nada
 #### `PUT` `/perfil`
 
 Esta rota faz a alteração do perfil do usuário logado. É necessário informar ao menos um dos campos para alteração. Caso um novo email seja informado, o mesmo será validado. Caso o email já exista no banco de dados, a requisição retornará um erro.
+
+###### tags: `JavaScript`  `NodeJS`  `Express`  `JWT`  `BCRYPT`  `PostgreSQL`  `Knex`  `Yup`
