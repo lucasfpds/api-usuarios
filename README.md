@@ -11,3 +11,8 @@ REST API onde é possível obter e fazer alterações em um banco de dados relac
 
 <img src="./api-usuarios.gif">
 
+Abaixo segue algumas informações sobre os endpoints:
+
+
+#### `POST` `/contas`
+
