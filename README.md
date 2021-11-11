@@ -63,8 +63,66 @@ $ npm run dev
 5. Aplicação ficará disponível em **http://localhost:3000** caso o valor padrão não seja alterado.
 
 
-Abaixo segue algumas informações sobre os endpoints:
+Abaixo segue as regras de negócio incluidas na API:
 
 
 #### `POST` `/contas`
 
+Para o cadastro é necessário informar todos os dados como no exemplo abaixo.
+
+```json
+{
+    "nome": "lucas",
+    "email": "lucas@email.com",
+    "senha": "123456",
+    "nome_loja": "Loja das Arvores"
+}
+
+```
+
+#### `POST` `/login`
+
+Para o login é obrigatório informar o email e a senha como no exemplo abaixo.
+
+```json
+{
+    "email": "lucas@email.com",
+    "senha": "123456"
+}
+```
+
+
+O retorno da requisição é um Json Web Token (JWT) que é utilizado para autenticação. Como no exemplo abaixo:
+
+```json
+{
+  "usuario": {
+    "id": 1,
+    "nome": "lucas",
+    "email": "lucas@email.com",
+    "nome_loja": "Loja das Arvores"
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjM2NTc3MjcyLCJleHAiOjE2MzY2MDYwNzJ9.1YY4yGz8vQaZRfHNTNNPU82JqUxOOpKpuo_jEMVz5UA"
+}
+```
+
+
+Copie somente o codigo entre parenteses para utilizar nas próximas requisições, colando o token no cabeçalho da requisição como Bearer Token.
+
+
+#### `GET` `/perfil`
+
+Esta rota retorna o perfil do usuário logado. Não é necessário informar nada no body da requisição apenas o token no cabeçalho da requisição como Bearer Token. A requisição vai retornar o perfil do usuário logado.
+
+```json
+{
+  "id": 1,
+  "nome": "lucas",
+  "email": "lucas@email.com",
+  "nome_loja": "Loja das Arvores"
+}
+
+```
+#### `PUT` `/perfil`
+
+Esta rota faz a alteração do perfil do usuário logado. É necessário informar ao menos um dos campos para alteração. Caso um novo email seja informado, o mesmo será validado. Caso o email já exista no banco de dados, a requisição retornará um erro.
