@@ -60,7 +60,7 @@ $ npm run start
 $ npm run dev
 ```
 
-5. Aplicação ficará disponível em **http://localhost:3000** caso o valor padrão não seja alterado.
+Aplicação ficará disponível em **http://localhost:3000** caso o valor padrão não seja alterado.
 
 
 Abaixo segue as regras de negócio incluidas na API:
@@ -107,7 +107,7 @@ O retorno da requisição é um Json Web Token (JWT) que é utilizado para auten
 ```
 
 
-Copie somente o codigo entre parenteses para utilizar nas próximas requisições, colando o token no cabeçalho da requisição como Bearer Token.
+Copie somente o token entre parenteses para utilizar nas próximas requisições, colando este mesmo token no cabeçalho da requisição como Bearer Token.
 
 
 #### `GET` `/perfil`
