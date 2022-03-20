@@ -16,6 +16,10 @@ const {
   atualizarPerfilUsuario,
 } = require("./controladores/usuarios");
 
+rotas.get("/", (req, res) => {
+  res.send(`Server running on port ${process.env.PORT}`)
+});
+
 rotas.post("/usuarios", cadastrarUsuario);
 
 rotas.post("/login", login);
